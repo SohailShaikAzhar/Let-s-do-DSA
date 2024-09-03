@@ -1,25 +1,31 @@
-class Solution 
+import java.util.HashMap;
+import java.util.Map;
+
+public class Solution 
 {
-    public boolean hasDuplicate(int[] nums) 
+    public static boolean isAnagram(String s, String t) 
     {
-        int size = nums.length;
-        int a, b;
-        boolean ans = false;
-        for(int i = 0; i < size; i++)
+        if (s.length() != t.length()) 
         {
-            a = nums[i];
-            for(int j = 0; j < size; j++)
+            return false;
+        }
+
+        Map<Character, Integer> charCountMap = new HashMap<>();
+
+        for (int i = 0; i < s.length(); i++) 
+        {
+            charCountMap.put(s.charAt(i), charCountMap.getOrDefault(s.charAt(i), 0) + 1);
+            charCountMap.put(t.charAt(i), charCountMap.getOrDefault(t.charAt(i), 0) - 1);
+        }
+
+        for (int count : charCountMap.values()) 
+        {
+            if (count != 0) 
             {
-                if(i != j)
-                {
-                    b = nums[j];
-                    if(a == b)
-                    {
-                        ans = true;
-                    }
-                }
+                return false;
             }
         }
-        return ans;
+
+        return true;
     }
 }
