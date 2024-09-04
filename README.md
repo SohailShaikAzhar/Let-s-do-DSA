@@ -1,4 +1,4 @@
-# Let-s-do-DSA
+# Let's do DSA
 DSA using Java
 
 -->Day-1:
